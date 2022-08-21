@@ -202,8 +202,10 @@ oneSearch.event.navClick = function (e) {
         return location.href = "./";
     }else if (key==="tools") {
         document.getElementById("iframe-tools").style.display="inline";
-    }else if (key==="navigator") {
-        document.getElementById("iframe-navigator").style.display="inline";
+    }else if (key==="coder") {
+        document.getElementById("iframe-coder").style.display="inline";
+    }else if (key==="designer") {
+        document.getElementById("iframe-designer").style.display="inline";
     }
     oneSearch.param["n"] = key;
     oneSearch.tool.refreshHash();
