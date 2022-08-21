@@ -9,6 +9,7 @@ oneSearch.param = {};
 
 
 oneSearch.init = function (){
+    oneSearch.config.loadParam();
     oneSearch.config.loadNavBtn();
     oneSearch.config.loadLayout()
     oneSearch.config.loadKeyword();
@@ -16,7 +17,7 @@ oneSearch.init = function (){
     oneSearch.config.loadSearchBar()
     oneSearch.config.loadSearchBtn();
     oneSearch.config.loadIframe();
-    oneSearch.config.loadParam();
+    oneSearch.config.updateByParam();
 }
 
 oneSearch.ui.hiddenByClass = function (className) {
@@ -163,9 +164,11 @@ oneSearch.ui.refreshBar = function (layout) {
         }
     }
 }
+
 oneSearch.tool.getUrl = function (kw,key) {
     let url = oneSearch.config.searchList[key]["url"];
-    url = kw === "" ? oneSearch.config.searchList[key]["home"] : url.replace("{keyword}",kw);
+    url = kw === "" ? oneSearch.config.searchList[key]["search"] : url.replace("{keyword}",kw);
+    if (oneSearch.config.searchList[key]["blocked"]===true) url = "./block.html?url="+encodeURI(url)
     return url;
 }
 oneSearch.tool.refreshHash = function () {
@@ -195,7 +198,8 @@ oneSearch.event.navClick = function (e) {
     let key = e.target.getAttribute("key");
     oneSearch.ui.hiddenByClass("iframe");
     if (key==="home") {
-        document.getElementById("iframe-home").style.display="inline";
+        // document.getElementById("iframe-home").style.display="inline";
+        return location.href = "./";
     }else if (key==="tools") {
         document.getElementById("iframe-tools").style.display="inline";
     }else if (key==="navigator") {
@@ -267,7 +271,8 @@ oneSearch.config.loadParam = function () {
     }
     let param = JSON.parse(JSON.stringify(oneSearch.config.param));  ;
     oneSearch.param = Object.assign(param,oneSearch.param);
-
+}
+oneSearch.config.updateByParam = function () {
     document.getElementById("layout").value = oneSearch.param["l"];
     document.getElementById("kw").value = oneSearch.param["k"];
     document.getElementById("engine").value = oneSearch.param["e"];
@@ -277,6 +282,7 @@ oneSearch.config.loadParam = function () {
     document.getElementById("search3").value = oneSearch.param["s3"];
     document.getElementById("search4").value = oneSearch.param["s4"];
 
+    // oneSearch.ui.refreshBar(oneSearch.param["l"]);
     oneSearch.ui.hiddenByClass("iframe");
     if (oneSearch.param["n"]!=="search") {
         document.getElementById("iframe-"+oneSearch.param["n"]).style.display = "inline";
@@ -290,7 +296,6 @@ oneSearch.config.loadParam = function () {
         }
     }
     oneSearch.tool.refreshHash();
-
 }
 oneSearch.config.loadNavBtn = function () {
     let navbtns = document.getElementsByClassName("navbtn")
@@ -344,7 +349,7 @@ oneSearch.config.loadEngineOpt = function () {
 }
 oneSearch.config.loadSearchBar = function (engine) {
     let searchBoxElement = document.getElementById("searchBox");
-    if (engine === undefined) engine = "general";
+    if (engine === undefined) engine = oneSearch.param["e"];
     let spanElement = document.createElement("span");
     spanElement.setAttribute("id",engine+"Bar");
     spanElement.setAttribute("class","search-bar");
@@ -369,14 +374,12 @@ oneSearch.config.loadSearchBtn = function () {
     searchBtn.onclick = oneSearch.event.searchClick;
 }
 oneSearch.config.loadIframe = function () {
-    // oneSearch.ui.hiddenByClass("iframe");
 
     let fullIframes = document.getElementsByClassName("iframe-full")
     for (const fullIframe of fullIframes) {
         fullIframe.style.height = oneSearch.ui.computeIframeSize().height1_1;
     }
 
-    // document.getElementById("iframe-home").style.display = "inline";
     oneSearch.ui.resizeFrame();
     window.onresize = oneSearch.ui.resizeFrame;
 }

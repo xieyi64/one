@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv=Content-Type content="text/html;charset=utf-8">
     <title>一个</title>
-    <meta name="description" content="集成主流搜索引擎及导航站工具站"/>
+    <meta name="description" content="一站式效率神器，集成主流搜索引擎及导航站工具站"/>
     <meta name="keywords"
           content="单搜，双搜，多搜，三搜，四搜，全搜，一起搜，集成搜索，超级搜索，集合搜索，综合搜索，万能搜索，百度谷歌一起搜，百度+谷歌，搜索引擎集合，全能搜索"/>
     <style>
@@ -15,42 +15,15 @@
             font-size: 14px;
             list-style: none
         }
-
         a {
             color: #000000;
             text-decoration: none
         }
-
         .btn {
             cursor: pointer;
         }
-
-        .s-bottom-ctner {
-            writing-mode: tb-rl;
-            text-align: left;
-            position: fixed;
-            width: 20px;
-            z-index: 1;
-            bottom: 0px;
-            text-align: center;
-            background-color: #eae7e76b;
-            padding: 1px;
-            padding-top: 5px;
-            padding-bottom: 5px;
-            color: #666;
-            font-size: 12px;
-            left: 0px;
-            border-radius: 5px;
-        }
-
-        .s-bottom-ctner a {
-            color: #666;
-            text-decoration: none;
-        }
     </style>
-    <!--[if lte IE 7]>
-    <link rel="stylesheet" type="text/css" href="css/ie7.css"/><![endif]-->
-    <link rel="stylesheet" href="//css.lxxl.in/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <script src="js/search.js"></script>
     <script src="js/config.js"></script>
 </head>
@@ -75,25 +48,8 @@
     <select name="search4" id="search4" num="4" class="form-control form-control-sm"></select>
     <input value="搜索" id="searchBtn" type="submit" class="btn btn-primary btn-sm">
 </div>
-<!--
-https://www.iamwawa.cn/
-https://tool.lu/
-https://wetools.cc/
-https://tool.oschina.net/
-http://txttool.com/
-https://cn.office-converter.com/
-https://atool.vip/
-https://www.atool99.com/
-https://www.zxgj.cn/
-http://www.bewindoweb.com/dwg.php
-
-导航
-https://cxy521.com/
-http://super-nb.com/
--->
 <div id="iframeBox">
-
-    <iframe src="https://www.iamwawa.cn/" id="iframe-home" class="iframe iframe-full" height="100%" width="100%"
+    <iframe src="https://search.fuyeor.com/zh-cn/Google" id="iframe-home" class="iframe iframe-full" height="100%" width="100%"
             border="0"></iframe>
     <iframe src="https://tool.lu/" id="iframe-tools" class="iframe iframe-full" height="100%" width="100%"
             border="0"></iframe>
@@ -105,8 +61,6 @@ http://super-nb.com/
     <iframe id="iframe-search3" class="iframe iframe-search iframe-down iframe-down-left" border="0"></iframe>
     <iframe id="iframe-search4" class="iframe iframe-search iframe-down iframe-down-right" border="0"></iframe>
 </div>
-<script type="text/javascript">
-    oneSearch.init();
-</script>
+<script type="text/javascript">oneSearch.init();</script>
 </body>
 </html>

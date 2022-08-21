@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <meta charset="UTF-8">
+    <meta http-equiv=Content-Type content="text/html;charset=utf-8">
+    <title>一个</title>
+    <meta name="description" content="一站式效率神器，集成主流搜索引擎及导航站工具站"/>
+    <meta name="keywords"
+        content="单搜，双搜，多搜，三搜，四搜，全搜，一起搜，集成搜索，超级搜索，集合搜索，综合搜索，万能搜索，百度谷歌一起搜，百度+谷歌，搜索引擎集合，全能搜索"/>
+    <link href="https://cdn.bootcdn.net/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /*
+ * Globals
+ */
+
+        /* Links */
+        a,
+        a:focus,
+        a:hover {
+            color: #fff;
+        }
+
+        /* Custom default button */
+        .btn-secondary,
+        .btn-secondary:hover,
+        .btn-secondary:focus {
+            color: #333;
+            text-shadow: none; /* Prevent inheritance from `body` */
+            background-color: #fff;
+            border: .05rem solid #fff;
+        }
+
+
+        /*
+         * Base structure
+         */
+
+        html,
+        body {
+            height: 100%;
+            background-color: #333;
+        }
+
+        body {
+            display: -ms-flexbox;
+            display: flex;
+            color: #fff;
+            text-shadow: 0 .05rem .1rem rgba(0, 0, 0, .5);
+            box-shadow: inset 0 0 5rem rgba(0, 0, 0, .5);
+        }
+
+        .cover-container {
+            max-width: 42em;
+        }
+
+
+        /*
+         * Header
+         */
+        .masthead {
+            margin-bottom: 2rem;
+        }
+
+        .masthead-brand {
+            margin-bottom: 0;
+        }
+
+        .nav-masthead .nav-link {
+            padding: .25rem 0;
+            font-weight: 700;
+            color: rgba(255, 255, 255, .5);
+            background-color: transparent;
+            border-bottom: .25rem solid transparent;
+        }
+
+        .nav-masthead .nav-link:hover,
+        .nav-masthead .nav-link:focus {
+            border-bottom-color: rgba(255, 255, 255, .25);
+        }
+
+        .nav-masthead .nav-link + .nav-link {
+            margin-left: 1rem;
+        }
+
+        .nav-masthead .active {
+            color: #fff;
+            border-bottom-color: #fff;
+        }
+
+        @media (min-width: 48em) {
+            .masthead-brand {
+                float: left;
+            }
+            .nav-masthead {
+                float: right;
+            }
+        }
+
+
+        /*
+         * Cover
+         */
+        .cover {
+            padding: 0 1.5rem;
+        }
+        .cover .btn-lg {
+            padding: .75rem 1.25rem;
+            font-weight: 700;
+        }
+
+
+        /*
+         * Footer
+         */
+        .mastfoot {
+            color: rgba(255, 255, 255, .5);
+        }
+
+    </style>
+</head>
+<body>
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto"></header>
+
+    <main role="main" class="inner cover">
+        <h1 class="cover-heading">拒绝访问</h1>
+        <p class="lead">此网站禁止通过IFrame跨域访问</p>
+        <p class="lead"><span id="time">5</span>&nbsp;&nbsp;秒后自动在新窗口打开</p>
+        <p class="lead">如果未打开则被浏览器拦截，请添加允许或点击以下按钮直接打开</p>
+        <p class="lead">
+            <a id="btn-open" href class="btn btn-lg btn-secondary" target="_blank">直接在新窗口打开</a>
+        </p>
+    </main>
+
+    <footer class="mastfoot mt-auto"></footer>
+</div>
+<script>
+    window.onload = function (){
+        let search = location.search;
+        let url = decodeURI(search.substring(search.indexOf("=")+1));
+        let timeElement = document.getElementById("time");
+        timeElement.innerHTML = "5";
+        let timer = setInterval(function (){
+            timeElement.innerHTML = (parseInt(timeElement.innerHTML)-1)+"";
+            if (timeElement.innerHTML==="0") {
+                window.open(url);
+                clearInterval(timer);
+            }
+        },1000);
+
+        document.getElementById("btn-open").onclick = function (){
+            clearInterval(timer);
+            window.open(url);
+        }
+
+
+    }
+</script>
+</body>
+</html>
