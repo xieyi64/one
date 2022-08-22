@@ -232,6 +232,13 @@ oneSearch.config.searchList = {
         "search": "https://so.gamersky.com/",
         "url": "https://so.gamersky.com/?s={keyword}",
     },
+    "steam": {
+        "icon": "",
+        "title": "Steam",
+        "index": "https://store.steampowered.com/",
+        "search": "https://store.steampowered.com/search/",
+        "url": "https://store.steampowered.com/search/?term={keyword}",
+    },
     //购物搜索
     "taobao": {
         "icon": "",
@@ -530,7 +537,7 @@ oneSearch.config.cateList = {
     "game": {
         "icon": "",
         "title": "游戏搜索",
-        "items": {"baidu":{},"taptap":{},"gamersky":{}}
+        "items": {"baidu":{},"taptap":{},"gamersky":{},"steam":{}}
     },
     "custom": {
         "icon": "",
