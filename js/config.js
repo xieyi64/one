@@ -217,6 +217,14 @@ oneSearch.config.searchList = {
         "search": "https://apps.microsoft.com/store/search/",
         "url": "https://apps.microsoft.com/store/search/{keyword}",
     },
+    "appinn": {
+        "icon": "",
+        "title": "小众软件",
+        "index": "https://www.appinn.com/",
+        "search": "https://www.appinn.com/",
+        "url": "https://www.appinn.com/?s={keyword}",
+
+    },
     //游戏搜索:
     "taptap" : {
         "icon": "",
@@ -482,7 +490,7 @@ oneSearch.config.cateList = {
     "software": {
         "icon": "",
         "title": "软件搜索",
-        "items": {"baidu":{},"baoku360":{},"yingyongbao":{},"play":{},"mstore":{}}
+        "items": {"baidu":{},"baoku360":{},"yingyongbao":{},"play":{},"mstore":{},"appinn":{}}
     },
     "data": {
         "icon": "",
